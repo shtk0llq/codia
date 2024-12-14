@@ -14,10 +14,10 @@ services:
 
   api:
     build:
-      context: ./docker/api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./docker/api/Dockerfile
     ports:
-      - 8000:8000
+      - 8000:80
     volumes:
       - ./docker/apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./docker/api/php.ini:/usr/local/etc/php/php.ini
@@ -42,9 +42,9 @@ services:
     networks:
       - codia-network
 
-  volumes:
-    codia_db:
+volumes:
+  codia_db:
 
-  networks:
-    codia-networks:
-      driver: bridge
+networks:
+  codia-network:
+    driver: bridge

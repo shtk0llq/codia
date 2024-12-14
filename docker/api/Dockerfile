@@ -9,8 +9,8 @@ RUN apt-get update \
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
 COPY docker/apache/default.conf /etc/apache2/sites-enabled/000-default.conf
-COPY docker/app/php.ini /usr/local/etc/php/php.ini
-COPY src/backend /var/www/html/
+COPY docker/api/php.ini /usr/local/etc/php/php.ini
+COPY src/api /var/www/html/
 
 RUN  a2enmod rewrite
 RUN chown -R www-data:www-data /var/www/html/storage && chmod -R 775 /var/www/html/storage
